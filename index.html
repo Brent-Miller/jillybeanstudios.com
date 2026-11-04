@@ -18,7 +18,6 @@
 <meta property="og:image" content="https://jillybeanstudios.com/loaded-dice/icon-512.png">
 <style>
   @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/fonts/fraunces-latin-opsz-normal.woff2) format('woff2'); }
-  @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 100 900; font-display: swap; src: url(/fonts/fraunces-latin-opsz-italic.woff2) format('woff2'); }
   @font-face { font-family: 'Outfit'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/fonts/outfit-latin-wght-normal.woff2) format('woff2'); }
 
   /* Layout: one narrow column on the game's "Midnight Parlor" table; the game sits on a cream scorepad card. */
@@ -68,20 +67,15 @@
 
   /* Studio */
   .studio { display: grid; gap: 14px; }
-  .pips { display: flex; gap: 7px; }
-  .pips span { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); }
-  .pips span:nth-child(2) { opacity: .6; }
-  .pips span:nth-child(3) { opacity: .3; }
   h1 {
     margin: 0;
     font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(44px, 11vw, 72px);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
+    font-weight: 800;
+    font-size: clamp(38px, 9vw, 60px);
+    line-height: 1;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
-  h1 em { font-style: italic; font-weight: 700; color: var(--gold); }
   .lede { margin: 0; max-width: 34ch; color: var(--dim); font-size: 19px; }
 
   /* Game card: the scorepad */
@@ -180,8 +174,7 @@
 
 <div class="wrap">
   <header class="studio">
-    <div class="pips" aria-hidden="true"><span></span><span></span><span></span></div>
-    <h1>Jilly Bean <em>Studios</em></h1>
+    <h1>Jilly Bean Studios</h1>
     <p class="lede">A small independent studio making games you can pick up in a minute and keep playing for weeks.</p>
   </header>
 
