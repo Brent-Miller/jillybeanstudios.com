@@ -1,0 +1,8 @@
+# GitHub Pages builds this site with Jekyll. The pages are plain HTML, so
+# Jekyll only copies them; this file exists to keep the repo's notes off the
+# public site. Files and folders starting with a dot (such as .claude/) are
+# left out automatically.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - SETUP.md
