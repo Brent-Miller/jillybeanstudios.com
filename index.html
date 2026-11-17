@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Jilly Bean Studios</title>
-<meta name="description" content="Jilly Bean Studios is a small independent game studio. Our first game is Loaded Dice, a roguelike dice builder.">
+<meta name="description" content="Jilly Bean Studios makes Loaded Dice, a roguelike dice game for Android and your browser. Free, no ads, plays offline.">
 <meta name="theme-color" content="#0e0a1d">
 <link rel="canonical" href="https://jillybeanstudios.com/">
 <link rel="icon" type="image/png" sizes="192x192" href="/loaded-dice/icon-192.png">
@@ -12,201 +12,397 @@
 <link rel="preload" href="/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:type" content="website">
-<meta property="og:title" content="Jilly Bean Studios">
-<meta property="og:description" content="Home of Loaded Dice, a roguelike dice builder.">
+<meta property="og:site_name" content="Jilly Bean Studios">
+<meta property="og:title" content="Loaded Dice: every roll can be rigged in your favor">
+<meta property="og:description" content="A roguelike dice game for Android and your browser. Free, no ads, plays offline.">
 <meta property="og:url" content="https://jillybeanstudios.com/">
-<meta property="og:image" content="https://jillybeanstudios.com/loaded-dice/icon-512.png">
+<meta property="og:image" content="https://jillybeanstudios.com/loaded-dice/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A cream die and a gold die beside the words Loaded Dice">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/fonts/fraunces-latin-opsz-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 100 900; font-display: swap; src: url(/fonts/fraunces-latin-opsz-italic.woff2) format('woff2'); }
   @font-face { font-family: 'Outfit'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/fonts/outfit-latin-wght-normal.woff2) format('woff2'); }
 
-  /* Layout: one narrow column on the game's "Midnight Parlor" table; the game sits on a cream scorepad card. */
+  /* The game's "Midnight Parlor" look: ink-violet table, cream dice, a cream scorepad, gold for the main action.
+     The game leads; the studio name is a slim top bar. One bold element: the dice tray in the hero. */
   :root {
     --table: #0e0a1d;
     --table-hi: #1a1336;
+    --edge: rgba(255, 255, 255, 0.1);
     --ink: #f8f2e4;
     --dim: #b2a9d6;
     --gold: #f7c24c;
+    --gold-deep: #b97f12;
     --gold-ink: #2b1b00;
+    --teal: #2fd4c2;
+    --teal-deep: #12907f;
+    --teal-ink: #052b27;
     --paper: #f7efdc;
     --paper-ink: #261d3f;
-    --paper-dim: #6f6488;
-    --paper-line: #e2d5b6;
+    --paper-dim: #6c6185;
+    --paper-rule: #e2d5b6;
+    --paper-live: #0b6e64;
     --margin: #d9614e;
-    --pip: #c2305f;
+    --die: #fbf6ea;
+    --die-edge: #d6c9a8;
+    --pip: #231a3c;
     --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
     --font-ui: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    /* Type scale: 4:3 ratio from 17px. */
+    --t0: 17px; --t1: 22.7px; --t2: 30.2px; --t3: 40.3px; --t4: 53.7px;
     color-scheme: dark;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     min-height: 100vh;
     background-color: var(--table);
     background-image:
       radial-gradient(120% 60% at 50% -10%, rgba(120, 90, 220, 0.35), transparent 70%),
-      radial-gradient(90% 50% at 50% 115%, rgba(247, 194, 76, 0.1), transparent 70%),
+      radial-gradient(90% 50% at 50% 115%, rgba(247, 194, 76, 0.08), transparent 70%),
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M16 1 31 16 16 31 1 16Z' fill='none' stroke='%23ffffff' stroke-opacity='.045'/%3E%3Ccircle cx='16' cy='16' r='1.2' fill='%23f7c24c' fill-opacity='.08'/%3E%3C/svg%3E"),
       linear-gradient(180deg, var(--table-hi), var(--table));
     background-attachment: fixed;
     color: var(--ink);
-    font: 17px/1.6 var(--font-ui);
+    font: var(--t0)/1.6 var(--font-ui);
     -webkit-font-smoothing: antialiased;
   }
+  a { color: var(--gold); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+  img { max-width: 100%; }
   .wrap {
-    max-width: 640px;
+    max-width: 1020px;
     margin: 0 auto;
     padding-left: max(20px, env(safe-area-inset-left, 0px));
     padding-right: max(20px, env(safe-area-inset-right, 0px));
-    padding-block: 72px 48px;
-    display: grid;
-    gap: 56px;
   }
-  a { color: var(--gold); text-underline-offset: 3px; }
-  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+  h1, h2 { margin: 0; font-family: var(--font-display); text-wrap: balance; }
 
-  /* Studio */
-  .studio { display: grid; gap: 14px; }
-  h1 {
-    margin: 0;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(38px, 9vw, 60px);
-    line-height: 1;
-    letter-spacing: -0.015em;
-    text-wrap: balance;
-  }
-  .lede { margin: 0; max-width: 34ch; color: var(--dim); font-size: 19px; }
+  /* Top bar */
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 20px; flex-wrap: wrap; padding-block: 22px; }
+  .word { font: 800 var(--t1)/1 var(--font-display); color: var(--ink); text-decoration: none; }
+  .nav { display: flex; gap: 20px; font-weight: 500; }
+  .nav a { color: var(--dim); text-decoration: none; }
+  .nav a:hover { color: var(--ink); text-decoration: underline; }
 
-  /* Game card: the scorepad */
-  .game {
-    position: relative;
-    background:
-      repeating-linear-gradient(180deg, transparent 0 31px, var(--paper-line) 31px 32px),
-      var(--paper);
-    color: var(--paper-ink);
-    border-radius: 18px;
-    padding: 28px 24px 26px 44px;
-    box-shadow: 0 2px 0 #c6b68e, 0 18px 40px rgba(0, 0, 0, 0.45);
-    display: grid;
-    grid-template-columns: 112px 1fr;
-    gap: 22px;
-    align-items: start;
-  }
-  .game::before {
-    content: "";
-    position: absolute;
-    top: 0; bottom: 0; left: 26px;
-    width: 2px;
-    background: var(--margin);
-    opacity: .55;
-  }
-  .game img {
-    width: 112px; height: 112px;
-    border-radius: 24px;
-    box-shadow: 0 6px 16px rgba(38, 29, 63, 0.35);
-    display: block;
-  }
-  .game-body { display: grid; gap: 10px; min-width: 0; }
-  .eyebrow {
-    margin: 0;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--paper-dim);
-  }
-  h2 {
-    margin: 0;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 36px;
-    line-height: 1.05;
-  }
-  .game p.desc { margin: 0; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+  /* Hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; padding-block: 24px 64px; align-items: center; }
+  .hero-text { display: grid; gap: 18px; min-width: 0; }
+  .game { display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--dim); }
+  .game img { width: 44px; height: 44px; border-radius: 11px; display: block; }
+  .hero h1 { font-weight: 800; font-size: var(--t3); line-height: 1.05; letter-spacing: -0.01em; }
+  .hero-text p { margin: 0; color: var(--dim); font-size: var(--t1); line-height: 1.45; max-width: 30ch; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 6px; }
   .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 11px 18px 12px;
-    border-radius: 12px;
-    font: 700 16px/1.2 var(--font-ui);
-    text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 20px 13px;
+    border-radius: 12px; border: 0;
+    font: 700 var(--t0)/1.2 var(--font-ui);
+    text-decoration: none; cursor: pointer;
     transition: transform .08s ease, box-shadow .08s ease;
   }
-  .btn-gold { background: var(--gold); color: var(--gold-ink); box-shadow: 0 4px 0 #b97f12; }
-  .btn-gold:hover { transform: translateY(1px); box-shadow: 0 3px 0 #b97f12; }
-  .btn-gold:active { transform: translateY(4px); box-shadow: 0 0 0 #b97f12; }
-  .btn-soon {
-    background: transparent; color: var(--paper-dim);
-    border: 2px dashed #c6b68e;
-    padding: 9px 16px 10px;
+  .btn-gold { background: var(--gold); color: var(--gold-ink); box-shadow: 0 4px 0 var(--gold-deep); }
+  .btn-gold:hover { transform: translateY(1px); box-shadow: 0 3px 0 var(--gold-deep); }
+  .btn-gold:active { transform: translateY(4px); box-shadow: 0 0 0 var(--gold-deep); }
+  .soon { color: var(--dim); font-size: 15px; }
+
+  /* Dice tray */
+  .tray {
+    background: radial-gradient(130% 120% at 50% 0%, #2a1f55, #171030);
+    border: 1px solid var(--edge);
+    border-radius: 22px;
+    padding: 20px 20px 22px;
+    display: grid; gap: 18px;
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.05), 0 20px 40px rgba(0, 0, 0, 0.35);
+    min-width: 0;
   }
-  .btn svg { width: 18px; height: 18px; flex: none; }
-  .game-links { margin: 6px 0 0; font-size: 15px; }
-  .game-links a { color: var(--paper-ink); }
+  .tray-hint { margin: 0; color: var(--dim); font-size: 15px; min-height: 2.9em; }
+  .dice { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; padding-bottom: 18px; }
+  .die {
+    position: relative;
+    aspect-ratio: 1;
+    border: 0; padding: 14%;
+    border-radius: 18%;
+    background: radial-gradient(130% 130% at 28% 18%, #fffefa, var(--die) 50%, #e8dec6);
+    box-shadow: 0 4px 0 var(--die-edge), 0 8px 14px rgba(0, 0, 0, 0.35);
+    display: grid; grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    cursor: pointer;
+    transition: transform .12s ease;
+  }
+  .die i { width: 72%; aspect-ratio: 1; border-radius: 50%; background: var(--pip); place-self: center; visibility: hidden; }
+  .die[aria-pressed="true"] { transform: translateY(-6px); box-shadow: 0 0 0 3px var(--gold), 0 4px 0 var(--die-edge), 0 10px 18px rgba(0, 0, 0, 0.4); }
+  .die:disabled { cursor: default; }
+  .die.rolling { animation: tumble .5s cubic-bezier(.3, .7, .4, 1); }
+  @keyframes tumble {
+    0% { transform: translateY(-18px) rotate(-90deg) scale(.9); }
+    60% { transform: translateY(2px) rotate(8deg); }
+    100% { transform: none; }
+  }
+  .held-tag {
+    position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%);
+    font: 700 12px/1 var(--font-ui); color: var(--gold); visibility: hidden;
+  }
+  .die[aria-pressed="true"] .held-tag { visibility: visible; }
+  .tray-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
+  .result { min-width: 0; }
+  .result b { display: block; font: 800 var(--t2)/1.1 var(--font-display); }
+  .result span { color: var(--dim); font-size: 15px; }
+  .roll { background: var(--teal); color: var(--teal-ink); box-shadow: 0 4px 0 var(--teal-deep); min-width: 11em; }
+  .roll:active { transform: translateY(4px); box-shadow: 0 0 0 var(--teal-deep); }
+
+  /* Sections */
+  section.block { padding-block: 0 64px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  section.block h2 { font-weight: 700; font-size: var(--t2); line-height: 1.15; }
+  .lede { margin: 0; color: var(--dim); font-size: var(--t1); line-height: 1.45; max-width: 32ch; }
+
+  /* Screenshots */
+  .shots {
+    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr);
+    gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px;
+    margin: 0; padding-left: 0; list-style: none;
+  }
+  .shots li { scroll-snap-align: start; }
+  .shots figure { margin: 0; display: grid; gap: 10px; }
+  .shots img { width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 16px; display: block; border: 1px solid var(--edge); background: #171030; }
+  .shots figcaption { color: var(--dim); font-size: 15px; line-height: 1.45; }
+
+  /* Fact scorecard */
+  .facts-text { display: grid; gap: 12px; }
+  .card {
+    position: relative;
+    background: var(--paper);
+    color: var(--paper-ink);
+    border-radius: 16px;
+    padding: 6px 22px 6px 46px;
+    box-shadow: 0 2px 0 #c6b68e, 0 18px 40px rgba(0, 0, 0, 0.45);
+  }
+  .card::before { content: ""; position: absolute; top: 0; bottom: 0; left: 28px; width: 2px; background: var(--margin); opacity: .55; }
+  .card dl { margin: 0; }
+  .card .row { display: grid; grid-template-columns: minmax(70px, 8ch) minmax(0, 1fr); gap: 16px; padding-block: 11px 10px; border-bottom: 1px solid var(--paper-rule); }
+  .card .row:last-child { border-bottom: 0; }
+  .card dt { color: var(--paper-dim); font-weight: 500; }
+  .card dd { margin: 0; font: italic 600 19px/1.4 var(--font-display); color: var(--paper-live); }
 
   /* Contact */
-  .contact { display: grid; gap: 6px; }
-  h3 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 24px; }
+  .contact { max-width: 60ch; }
   .contact p { margin: 0; color: var(--dim); }
-  .email { font-size: 19px; font-weight: 500; }
+  .contact .email { font-size: var(--t1); font-weight: 500; }
 
   footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 20px;
-    font-size: 14px;
-    color: var(--dim);
-    display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between;
+    border-top: 1px solid var(--edge);
+    padding-block: 20px 32px;
+    display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between;
+    font-size: 14px; color: var(--dim);
   }
   footer a { color: var(--dim); }
 
-  @media (max-width: 520px) {
-    .wrap { padding-block: 48px 36px; gap: 44px; }
-    .game { grid-template-columns: 1fr; padding: 24px 20px 24px 40px; }
-    .game::before { left: 22px; }
-    .game img { width: 88px; height: 88px; border-radius: 20px; }
-    h2 { font-size: 32px; }
+  @media (min-width: 560px) {
+    .hero h1 { font-size: var(--t4); }
   }
-  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+  @media (min-width: 860px) {
+    .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; padding-block: 48px 88px; }
+    section.block.facts { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: start; gap: 56px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .die { transition: none; }
+    .die.rolling { animation: none; }
+  }
 </style>
 </head>
 <body>
-
 <div class="wrap">
-  <header class="studio">
-    <h1>Jilly Bean Studios</h1>
-    <p class="lede">A small independent studio making games you can pick up in a minute and keep playing for weeks.</p>
+  <header class="top">
+    <a class="word" href="/">Jilly Bean Studios</a>
+    <nav class="nav" aria-label="On this page">
+      <a href="#loaded-dice">Loaded Dice</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
   <main>
-    <section class="game" aria-labelledby="ld-title">
-      <img src="/loaded-dice/icon-512.png" alt="Loaded Dice app icon: a cream die and a gold die" width="112" height="112">
-      <div class="game-body">
-        <p class="eyebrow">Our first game</p>
-        <h2 id="ld-title">Loaded Dice</h2>
-        <p class="desc">A roguelike dice builder. Roll, hold and score five dice on a classic scorecard, stack trinkets into combos, and beat a boss every fourth round.</p>
+    <div class="hero">
+      <div class="hero-text">
+        <div class="game"><img src="/loaded-dice/icon-192.png" alt="" width="44" height="44">Loaded Dice</div>
+        <h1>Every roll can be rigged in your favor.</h1>
+        <p>A roguelike dice game for Android and your browser. Free, no ads, plays offline.</p>
         <div class="actions">
-          <a class="btn btn-gold" href="https://brent-miller.github.io/roll-the-dice/">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L8.5 4.64A1 1 0 0 0 7 5.5Z"/></svg>
-            Play in your browser
-          </a>
-          <span class="btn btn-soon">Coming soon to Google Play</span>
+          <a class="btn btn-gold" href="https://brent-miller.github.io/roll-the-dice/">Play in your browser</a>
+          <span class="soon">Coming soon to Google Play</span>
         </div>
-        <p class="game-links"><a href="https://brent-miller.github.io/roll-the-dice/privacy.html">Privacy policy</a></p>
       </div>
+
+      <div class="tray" role="group" aria-label="Try a roll">
+        <p class="tray-hint" id="tray-hint">Tap a die to hold it, then roll the rest. You get three rolls.</p>
+        <div class="dice" id="dice"></div>
+        <div class="tray-foot">
+          <p class="result" id="tray-result" aria-live="polite" style="margin:0"><b id="res-box">Large Straight</b><span id="res-pts">40 points</span></p>
+          <button class="btn roll" id="roll" type="button">Roll again (2 left)</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="block" id="loaded-dice" aria-labelledby="shots-title">
+      <h2 id="shots-title">What a run looks like</h2>
+      <ul class="shots">
+        <li><figure>
+          <img src="/loaded-dice/shots/scoring.webp" alt="Scoring a Small Straight: four trinkets turn 94 points times 83.25 mult into 7,825" width="540" height="960" loading="lazy">
+          <figcaption>Trinkets multiply your score. A Small Straight worth 30 becomes 7,825.</figcaption>
+        </figure></li>
+        <li><figure>
+          <img src="/loaded-dice/shots/shop.webp" alt="The shop between rounds, offering trinkets, a tome, a dice upgrade and a pack" width="540" height="960" loading="lazy">
+          <figcaption>Between rounds, spend your winnings on trinkets and dice upgrades.</figcaption>
+        </figure></li>
+        <li><figure>
+          <img src="/loaded-dice/shots/boss.webp" alt="The final boss, The Crown, which raises the target score" width="540" height="960" loading="lazy">
+          <figcaption>Every few rounds a boss changes the rules.</figcaption>
+        </figure></li>
+      </ul>
+    </section>
+
+    <section class="block facts" aria-labelledby="facts-title">
+      <div class="facts-text">
+        <h2 id="facts-title">The short version</h2>
+        <p class="lede">Roll five dice, hold the ones you want and score them on a classic scorecard. Build an engine that keeps up with the climbing targets.</p>
+      </div>
+      <div class="card">
+        <dl>
+          <div class="row"><dt>Genre</dt><dd>Roguelike dice builder</dd></div>
+          <div class="row"><dt>A run</dt><dd>About 20 minutes</dd></div>
+          <div class="row"><dt>Plays</dt><dd>Offline, no account</dd></div>
+          <div class="row"><dt>Price</dt><dd>Free, no ads</dd></div>
+          <div class="row"><dt>On</dt><dd>Android and any browser</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="block contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p>Jilly Bean Studios makes small strategy games for phones and browsers. Loaded Dice is the first. Questions, bug reports and feedback are welcome.</p>
+      <p class="email"><a href="mailto:support@jillybeanstudios.com">support@jillybeanstudios.com</a></p>
     </section>
   </main>
 
-  <section class="contact" aria-labelledby="contact-title">
-    <h3 id="contact-title">Say hello</h3>
-    <p>Questions, bug reports or feedback:</p>
-    <p class="email"><a href="mailto:support@jillybeanstudios.com">support@jillybeanstudios.com</a></p>
-  </section>
-
   <footer>
     <span>&copy; 2026 Jilly Bean Studios</span>
-    <span>No cookies, no analytics, no trackers.</span>
+    <span><a href="/loaded-dice/privacy">Loaded Dice privacy policy</a>. This site sets no cookies and uses no analytics.</span>
   </footer>
 </div>
+
+<script>
+(() => {
+  // Pip positions on a 3x3 grid (cells 0-8) for faces 1-6.
+  const PIPS = { 1: [4], 2: [2, 6], 3: [2, 4, 6], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
+  const NAMES = ['', 'Ones', 'Twos', 'Threes', 'Fours', 'Fives', 'Sixes'];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const diceEl = document.getElementById('dice');
+  const rollBtn = document.getElementById('roll');
+  const resBox = document.getElementById('res-box');
+  const resPts = document.getElementById('res-pts');
+  const hint = document.getElementById('tray-hint');
+  let faces = [2, 3, 4, 5, 6];
+  let held = [false, false, false, false, false];
+  let rollsLeft = 2;
+
+  const dieEls = faces.map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'die';
+    for (let c = 0; c < 9; c++) b.appendChild(document.createElement('i'));
+    const tag = document.createElement('span');
+    tag.className = 'held-tag';
+    tag.textContent = 'Held';
+    b.appendChild(tag);
+    b.addEventListener('click', () => {
+      if (rollsLeft === 0) return;
+      held[i] = !held[i];
+      draw();
+    });
+    diceEl.appendChild(b);
+    return b;
+  });
+
+  // The best box for five dice, with the scorecard's base values (Loaded Dice docs/RULES.md).
+  function best(f) {
+    const counts = [0, 0, 0, 0, 0, 0, 0];
+    f.forEach(v => counts[v]++);
+    const sum = f.reduce((a, b) => a + b, 0);
+    const has = n => counts.some(c => c >= n);
+    const run = len => {
+      for (let s = 1; s + len - 1 <= 6; s++) {
+        let ok = true;
+        for (let v = s; v < s + len; v++) if (!counts[v]) ok = false;
+        if (ok) return true;
+      }
+      return false;
+    };
+    const opts = [];
+    if (has(5)) opts.push(['Five of a Kind', 50]);
+    if (run(5)) opts.push(['Large Straight', 40]);
+    if (run(4)) opts.push(['Small Straight', 30]);
+    if (counts.includes(3) && counts.includes(2)) opts.push(['Full House', 25]);
+    if (has(4)) opts.push(['Four of a Kind', sum]);
+    if (has(3)) opts.push(['Three of a Kind', sum]);
+    for (let v = 6; v >= 1; v--) if (counts[v]) opts.push([NAMES[v], v * counts[v]]);
+    opts.push(['Chance', sum]);
+    return opts.reduce((a, b) => (b[1] > a[1] ? b : a));
+  }
+
+  function draw() {
+    dieEls.forEach((el, i) => {
+      const on = PIPS[faces[i]];
+      el.querySelectorAll('i').forEach((p, c) => { p.style.visibility = on.includes(c) ? 'visible' : 'hidden'; });
+      el.setAttribute('aria-pressed', held[i]);
+      el.setAttribute('aria-label', `Die showing ${faces[i]}`);
+      el.disabled = rollsLeft === 0;
+    });
+    const [name, pts] = best(faces);
+    resBox.textContent = name;
+    resPts.textContent = `${pts} points`;
+    if (rollsLeft > 0) {
+      rollBtn.textContent = `Roll again (${rollsLeft} left)`;
+      hint.textContent = 'Tap a die to hold it, then roll the rest. You get three rolls.';
+    } else {
+      rollBtn.textContent = 'New turn';
+      hint.textContent = 'That was one turn. In Loaded Dice, trinkets multiply it.';
+    }
+  }
+
+  function roll(animate) {
+    faces = faces.map((v, i) => (held[i] ? v : 1 + Math.floor(Math.random() * 6)));
+    if (animate && !reduce) {
+      dieEls.forEach((el, i) => {
+        if (held[i]) return;
+        el.classList.remove('rolling');
+        void el.offsetWidth;
+        el.classList.add('rolling');
+      });
+    }
+    draw();
+  }
+
+  rollBtn.addEventListener('click', () => {
+    if (rollsLeft === 0) {
+      held = [false, false, false, false, false];
+      rollsLeft = 2;
+      roll(true);
+      return;
+    }
+    if (held.every(Boolean)) {
+      hint.textContent = 'Every die is held. Tap one to let it roll.';
+      return;
+    }
+    rollsLeft--;
+    roll(true);
+  });
+
+  // The page opens on a real first roll, tumbled once.
+  roll(true);
+})();
+</script>
 </body>
 </html>
