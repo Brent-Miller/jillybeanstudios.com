@@ -49,6 +49,13 @@
     --die: #fbf6ea;
     --die-edge: #d6c9a8;
     --pip: #231a3c;
+    /* The game's table (Loaded Dice docs/DESIGN.md): green baize in a walnut rim, under a warm lamp. */
+    --felt: #1d6656;
+    --felt-mid: #165045;
+    --felt-lo: #0f3631;
+    --rim: #5b3a22;
+    --rim-dark: #2e1c10;
+    --lamp: rgba(255, 214, 140, 0.11);
     --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
     --font-ui: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     /* Type scale: 4:3 ratio from 17px. */
@@ -61,12 +68,13 @@
     margin: 0;
     min-height: 100vh;
     background-color: var(--table);
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat, no-repeat;
     background-image:
-      radial-gradient(120% 60% at 50% -10%, rgba(120, 90, 220, 0.35), transparent 70%),
-      radial-gradient(90% 50% at 50% 115%, rgba(247, 194, 76, 0.08), transparent 70%),
+      radial-gradient(60% 520px at 50% 300px, var(--lamp), transparent 70%),
+      radial-gradient(120% 640px at 50% -90px, rgba(120, 90, 220, 0.35), transparent 70%),
+      radial-gradient(90% 420px at 50% calc(100% + 60px), rgba(247, 194, 76, 0.08), transparent 70%),
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M16 1 31 16 16 31 1 16Z' fill='none' stroke='%23ffffff' stroke-opacity='.045'/%3E%3Ccircle cx='16' cy='16' r='1.2' fill='%23f7c24c' fill-opacity='.08'/%3E%3C/svg%3E"),
       linear-gradient(180deg, var(--table-hi), var(--table));
-    background-attachment: fixed;
     color: var(--ink);
     font: var(--t0)/1.6 var(--font-ui);
     -webkit-font-smoothing: antialiased;
@@ -111,16 +119,18 @@
   .soon { color: var(--dim); font-size: 15px; }
 
   /* Dice tray */
+  /* A sunken baize tray in a walnut rim, lit from above by the lamp, as in the game. */
   .tray {
-    background: radial-gradient(130% 120% at 50% 0%, #2a1f55, #171030);
-    border: 1px solid var(--edge);
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 6 6 0' stroke='%23ffffff' stroke-opacity='.045'/%3E%3C/svg%3E"),
+      radial-gradient(120% 95% at 50% 15%, var(--felt) 0%, var(--felt-mid) 55%, var(--felt-lo) 100%);
     border-radius: 22px;
-    padding: 20px 20px 22px;
+    padding: 22px 22px 24px;
     display: grid; gap: 18px;
-    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.05), 0 20px 40px rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0 0 0 4px var(--rim), inset 0 0 0 7px var(--rim-dark), inset 0 8px 20px rgba(0, 0, 0, 0.5), 0 20px 40px rgba(0, 0, 0, 0.4);
     min-width: 0;
   }
-  .tray-hint { margin: 0; color: var(--dim); font-size: 15px; min-height: 2.9em; }
+  .tray-hint { margin: 0; color: rgba(248, 242, 228, 0.82); font-size: 15px; min-height: 2.9em; }
   .dice { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; padding-bottom: 18px; }
   .die {
     position: relative;
@@ -150,7 +160,7 @@
   .tray-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
   .result { min-width: 0; }
   .result b { display: block; font: 800 var(--t2)/1.1 var(--font-display); }
-  .result span { color: var(--dim); font-size: 15px; }
+  .result span { color: rgba(248, 242, 228, 0.78); font-size: 15px; }
   .roll { background: var(--teal); color: var(--teal-ink); box-shadow: 0 4px 0 var(--teal-deep); min-width: 11em; }
   .roll:active { transform: translateY(4px); box-shadow: 0 0 0 var(--teal-deep); }
 
@@ -161,7 +171,7 @@
 
   /* Screenshots */
   .shots {
-    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr);
+    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(200px, 1fr);
     gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px;
     margin: 0; padding-left: 0; list-style: none;
   }
@@ -172,12 +182,15 @@
 
   /* Fact scorecard */
   .facts-text { display: grid; gap: 12px; }
+  /* A page torn off the scorepad: punched holes along the top, then the red margin. */
   .card {
     position: relative;
-    background: var(--paper);
+    background:
+      radial-gradient(circle at 50% 9px, var(--table-hi) 4px, transparent 4.8px) 0 0 / 30px 18px space no-repeat,
+      var(--paper);
     color: var(--paper-ink);
     border-radius: 16px;
-    padding: 6px 22px 6px 46px;
+    padding: 18px 22px 6px 46px;
     box-shadow: 0 2px 0 #c6b68e, 0 18px 40px rgba(0, 0, 0, 0.45);
   }
   .card::before { content: ""; position: absolute; top: 0; bottom: 0; left: 28px; width: 2px; background: var(--margin); opacity: .55; }
@@ -250,6 +263,10 @@
       <h2 id="shots-title">What a run looks like</h2>
       <ul class="shots">
         <li><figure>
+          <img src="/loaded-dice/shots/round.webp" alt="A round in play: five dice in a green felt tray above the cream scorepad, with trinkets along the top" width="540" height="960" loading="lazy">
+          <figcaption>Roll five dice in the felt tray, hold the ones you want and score them on the scorepad.</figcaption>
+        </figure></li>
+        <li><figure>
           <img src="/loaded-dice/shots/scoring.webp" alt="Scoring a Small Straight: four trinkets turn 94 points times 83.25 mult into 7,825" width="540" height="960" loading="lazy">
           <figcaption>Trinkets multiply your score. A Small Straight worth 30 becomes 7,825.</figcaption>
         </figure></li>
@@ -259,7 +276,7 @@
         </figure></li>
         <li><figure>
           <img src="/loaded-dice/shots/boss.webp" alt="The final boss, The Crown, which raises the target score" width="540" height="960" loading="lazy">
-          <figcaption>Every few rounds a boss changes the rules.</figcaption>
+          <figcaption>Every few rounds a boss changes the rules, and the table lamp turns red.</figcaption>
         </figure></li>
       </ul>
     </section>

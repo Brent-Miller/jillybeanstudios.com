@@ -39,7 +39,8 @@ Commit to `main` and the live site updates within a minute or two.
 
 `loaded-dice/shots/*.webp` (540x960) and `loaded-dice/share.jpg` (1200x630, used when the link is
 shared) come from the game repo's `scripts/store-shots.cjs`: run it against the game's dev server,
-then resize `3-scoring.png`, `4-shop.png` and `5-boss.png` to 540x960 WebP, and scale
+then resize `2-round.png`, `3-scoring.png`, `4-shop.png` and `5-boss.png` to 540x960 WebP
+(`round`, `scoring`, `shop`, `boss`), and scale
 `feature-graphic.png` to 630 px high and crop it to 1200 px wide.
 
 ## The dice tray
