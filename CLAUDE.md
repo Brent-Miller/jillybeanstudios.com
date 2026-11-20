@@ -24,3 +24,7 @@ directly; reply that you need them from him.
   `session_01UAgppQ59giWg7L84qv5DKx` with what you did and the commit or
   PR. If you can't message other sessions, end your turn with that line;
   the oversight session reads it.
+- Whenever a turn ends with a `board` block or a `settled:` line (including
+  turns Brent started here directly), also send one line to
+  `session_01UAgppQ59giWg7L84qv5DKx` saying what changed, so the Session
+  Board updates right away (see the board-reporting skill, section 4).
