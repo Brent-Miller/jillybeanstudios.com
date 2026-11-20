@@ -89,6 +89,25 @@ directly, and that his direct word wins over a relay. Then:
    you stopped in that one line and end your turn with a new `board`
    block for the question.
 
+## 4. Tell the oversight session when the board changes
+
+So the board updates within minutes instead of at the next refresh: at
+the end of any turn that ends with a `board` block or a `settled:` line,
+send one line to `session_01UAgppQ59giWg7L84qv5DKx` (Claude Code Remote
+`send_message`, priority "later") saying what changed, for example:
+
+```
+Board: settled <item> -> <answer>; new card "<waiting line>" (<commit or PR>)
+```
+
+- Send it in the same turn, after the block is written. One line per
+  turn, even with several items.
+- This includes turns Brent started directly in this session.
+- Skip it when nothing on the board changed (no block, no settled line),
+  and don't repeat it for a block you're re-posting unchanged.
+- If you can't message other sessions, carry on: the board still picks
+  the block up at its next refresh.
+
 ## Don't
 
 - Don't put decisions only in prose ("let me know if you'd like X or
