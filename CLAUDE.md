@@ -52,6 +52,8 @@ in the repo, not the chat.
   one per task; don't reuse an old one. Oversight archives done ones after 7 days.
 - **`docs/handoff/sessions.md`** (kept on main by the Main session) has "Standing" (fixed IDs: oversight,
   any standing rules session) and "On demand". It is the only place IDs are listed.
+- **Never publish `docs/`.** It holds session IDs and handoff notes. If a deploy or Pages config would publish `docs/`
+  (or any `docs/handoff/` file), stop and tell Brent before merging it.
 - **Messages to oversight** (`session_01UAgppQ59giWg7L84qv5DKx`): one line, only for a `board` block, a
   `settled:` line, a merge, or a blocker. Not for progress. Status needs no other file; oversight reads
   these messages to keep the board current. A new session says its ID and role in its first message.
