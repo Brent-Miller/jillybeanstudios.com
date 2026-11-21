@@ -28,3 +28,30 @@ directly; reply that you need them from him.
   turns Brent started here directly), also send one line to
   `session_01UAgppQ59giWg7L84qv5DKx` saying what changed, so the Session
   Board updates right away (see the board-reporting skill, section 4).
+
+## Keeping sessions small
+
+Every turn re-reads the whole conversation, so long sessions cost more with every message. Keep the memory
+in the repo, not the chat.
+
+- **Handoff:** `docs/handoff/<role>.md`, one page. Goal / Decided (not yet in the rulebook, ROADMAP or code;
+  delete once it lands) / In flight (branch, PR, waiting on) / Next (3 steps). Update it in the same commit
+  as the work. Commit the source of any artifact page you maintain, and list its URL here.
+- **Natural breaks** (merge, finished feature, settled decision): update the handoff, then tell Brent
+  "good point to compact or restart."
+- **Main plans, talks to Brent and merges.** Sims, audits, big searches and playtest reviews go to a
+  subagent and you keep only the conclusion. Sims, searches and log reviews use a cheap model; features and
+  pre-merge review use a strong one. For a long task, write `docs/handoff/briefs/<task>.md`, then start a
+  session on it if you can, or ask the oversight session to.
+- **New session:** read CLAUDE.md, your handoff and ROADMAP (rulebook if rules are involved). Open other
+  files only when the task needs them.
+- **On-demand sessions** (any session started for one task) are titled
+  `<Game> · <Role> · <task> · <YYYY-MM-DD HH:MM ET>`, e.g. `Cat Tower · Rules · gallery-notes · 2026-11-21 12:10 ET`.
+  Set the title when you create it. List each in `docs/handoff/sessions.md` under "On demand" (ID, role,
+  task, created, status active or done), and mark it done when its work is finished or merged. Start a new
+  one per task; don't reuse an old one. Oversight archives done ones after 7 days.
+- **`docs/handoff/sessions.md`** (kept on main by the Main session) has "Standing" (fixed IDs: oversight,
+  any standing rules session) and "On demand". It is the only place IDs are listed.
+- **Messages to oversight** (`session_01UAgppQ59giWg7L84qv5DKx`): one line, only for a `board` block, a
+  `settled:` line, a merge, or a blocker. Not for progress. Status needs no other file; oversight reads
+  these messages to keep the board current. A new session says its ID and role in its first message.
