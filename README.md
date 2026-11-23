@@ -6,7 +6,8 @@ on GitHub Pages from the `main` branch.
 | File | What it is |
 | --- | --- |
 | `index.html` | The home page |
-| `loaded-dice/privacy/index.html` | Forwards jillybeanstudios.com/loaded-dice/privacy to the policy in the game repo (`brent-miller/roll-the-dice`, `public/privacy.html`). Edit the policy there, not here. |
+| `loaded-dice/privacy/index.html` | The Loaded Dice Privacy Policy, copied word for word from the game repo (`roll-the-dice/public/privacy.html`); only its link to the Delete Your Data page differs. Policy wording changes need a rules review. |
+| `loaded-dice/delete-data/index.html` | The Loaded Dice Delete Your Data page, copied from `roll-the-dice/public/delete-data.html`; only its link to the policy differs. |
 | `404.html` | Shown for any address that doesn't exist |
 | `CNAME` | Tells GitHub Pages the site's domain. Don't delete it. |
 | `loaded-dice/shots/`, `loaded-dice/share.jpg` | Screenshots and the link-preview image (see below) |

@@ -1,6 +1,6 @@
 # Website handoff (jillybeanstudios.com)
 
-Session: Jilly Bean · Website (`session_01UAgppN6q6bufmXzYVJLZC1`). Updated 2026-11-21.
+Session: Jilly Bean · Website (`session_01UAgppN6q6bufmXzYVJLZC1`). Updated 2026-11-23.
 
 ## Goal
 
@@ -14,9 +14,10 @@ Google Workspace.
 
 Not written down anywhere else yet:
 
-- The privacy policy lives only in the game repo (`roll-the-dice/public/privacy.html`, served at
-  brent-miller.github.io). `/loaded-dice/privacy` here only redirects to it. Play Console keeps
-  the github.io address for now; Brent will raise moving it after launch (Nov 13).
+- Loaded Dice's privacy pages now live here (Brent, Nov 23): `/loaded-dice/privacy/` and
+  `/loaded-dice/delete-data/`, copied word for word from roll-the-dice `public/` (only the
+  links between the two pages changed). Main then points the app and docs here and turns the
+  github.io copies into redirects.
 - Site text follows the game's store listing (`roll-the-dice/docs/STORE-LISTING.md`) and the
   game's look (`roll-the-dice/docs/DESIGN.md`). When either changes, the site follows.
 - Every visual change gets a preview first (the artifact below) and goes live only after Brent's
@@ -25,8 +26,10 @@ Not written down anywhere else yet:
 
 ## In flight
 
-Nothing. Waiting on Brent (manual): delete the merged branches `site-redesign` and
-`game-look-update`.
+Branch `privacy-pages` (session_01UAgppRUKzg7Dcfs6qTqmtB): the two privacy pages. Still to do:
+browser checks at 1280/390/360, preview, Brent's go, fast-forward `main`, deploy check, report
+to Main with the SHA and URLs. Waiting on Brent (manual): delete the merged branches
+`site-redesign` and `game-look-update`.
 
 ## Next
 
