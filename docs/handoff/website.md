@@ -1,6 +1,6 @@
 # Website handoff (jillybeanstudios.com)
 
-Session: Jilly Bean · Website (`session_01UAgppN6q6bufmXzYVJLZC1`). Updated 2026-11-23.
+Session: Jilly Bean · Website (`session_01UAgppN6q6bufmXzYVJLZC1`). Updated 2026-11-24.
 
 ## Goal
 
@@ -26,10 +26,9 @@ Not written down anywhere else yet:
 
 ## In flight
 
-Branch `privacy-pages` (session_01UAgppRUKzg7Dcfs6qTqmtB): the two privacy pages. Still to do:
-browser checks at 1280/390/360, preview, Brent's go, fast-forward `main`, deploy check, report
-to Main with the SHA and URLs. Waiting on Brent (manual): delete the merged branches
-`site-redesign` and `game-look-update`.
+Nothing. Privacy pages are live (Brent approved Nov 24); Main is pointing the app and docs at
+them and turning the github.io copies into redirects. Waiting on Brent (manual): delete the merged
+branches `site-redesign`, `game-look-update` and `privacy-pages`.
 
 ## Next
 
@@ -40,6 +39,8 @@ to Main with the SHA and URLs. Waiting on Brent (manual): delete the merged bran
    from a separate checkout of `roll-the-dice` with its own `npm ci` (a symlinked
    `node_modules` loses the fonts), resize as in the README, update copy, preview, merge.
 3. In January: update the footer year.
+4. When the policy changes in roll-the-dice (after its rules review), copy it here word for
+   word, keeping only the two cross-links.
 
 ## Artifact pages
 
@@ -47,5 +48,7 @@ to Main with the SHA and URLs. Waiting on Brent (manual): delete the merged bran
   source: it is `index.html` with the `@font-face` rules swapped for Google Fonts (previews
   can't load the site's own font files) and image paths made relative. Rebuild it from
   `index.html` before each preview.
+- Privacy pages preview (one-off, Nov 23): https://claude.ai/artifact/LadsfPTV7B94kQsAxysjaB.
+  Not maintained; rebuild from the two pages if their look ever changes.
 - Earlier one-off pages (design draft, logo options, the ten-update proposal) are finished and
   not maintained.
