@@ -27,10 +27,9 @@ Not written down anywhere else yet:
 ## In flight
 
 Branch `google-play-link`: Loaded Dice is live on Google Play (Nov 24), so the hero's "Coming
-soon" text is now a gold "Get it on Google Play" button, with "Play in your browser" as an
+soon" text is now Google's official badge (Brent sent the PNG), with "Play in your browser" as an
 outlined button beside it, and the facts card says "Google Play and any browser". Waiting on
-Brent's go to fast-forward `main`. Google's badge images are blocked from the sandbox, so it is a
-text button; Brent can upload the official badge if he wants it.
+Brent's go to fast-forward `main`.
 
 ## Next
 
@@ -38,8 +37,6 @@ text button; Brent can upload the official badge if he wants it.
    from a separate checkout of `roll-the-dice` with its own `npm ci` (a symlinked
    `node_modules` loses the fonts), resize as in the README, update copy, preview, merge.
 2. In January: update the footer year.
-3. If Brent sends the official Google Play badge PNG: save it in `loaded-dice/`, put it in the
-   hero link, preview, merge.
 
 ## Artifact pages
 

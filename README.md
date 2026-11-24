@@ -20,12 +20,11 @@ How the domain, DNS and HTTPS are set up: [SETUP.md](SETUP.md).
 
 ## The Google Play link
 
-The hero's gold button goes to the store page,
+The hero shows Google's official "Get it on Google Play" badge
+(`loaded-dice/google-play-badge.png`, from https://play.google.com/intl/en_us/badges/), linking to
 https://play.google.com/store/apps/details?id=com.jillybeanstudios.loadeddice, with "Play in your
-browser" next to it. It is a plain text button in the site's own style, so visitors' browsers
-don't contact Google until they tap it. To use Google's official badge instead, save the PNG from
-https://play.google.com/intl/en_us/badges/ in this repo (for example
-`loaded-dice/google-play-badge.png`) and put it inside that link.
+browser" beside it. The badge is served from this site, so visitors' browsers don't contact Google
+until they tap it.
 
 ## Updating the screenshots and share image
 

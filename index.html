@@ -116,7 +116,9 @@
   .btn-gold { background: var(--gold); color: var(--gold-ink); box-shadow: 0 4px 0 var(--gold-deep); }
   .btn-gold:hover { transform: translateY(1px); box-shadow: 0 3px 0 var(--gold-deep); }
   .btn-gold:active { transform: translateY(4px); box-shadow: 0 0 0 var(--gold-deep); }
-  .btn-line { color: var(--ink); box-shadow: inset 0 0 0 2px rgba(248, 242, 228, 0.35); padding-inline: 18px; }
+  .play { display: block; line-height: 0; border-radius: 9px; }
+  .play img { display: block; width: 189px; height: auto; }
+  .btn-line { color: var(--ink); box-shadow: inset 0 0 0 2px rgba(248, 242, 228, 0.35); padding-inline: 18px; min-height: 56px; }
   .btn-line:hover { box-shadow: inset 0 0 0 2px var(--gold); }
 
   /* Dice tray */
@@ -245,7 +247,7 @@
         <h1>Every roll can be rigged in your favor.</h1>
         <p>A roguelike dice game for Android and your browser. Free, no ads, plays offline.</p>
         <div class="actions">
-          <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.jillybeanstudios.loadeddice">Get it on Google Play</a>
+          <a class="play" href="https://play.google.com/store/apps/details?id=com.jillybeanstudios.loadeddice"><img src="/loaded-dice/google-play-badge.png" alt="Get it on Google Play" width="189" height="56"></a>
           <a class="btn btn-line" href="https://brent-miller.github.io/roll-the-dice/">Play in your browser</a>
         </div>
       </div>
