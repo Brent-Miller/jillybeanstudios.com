@@ -18,23 +18,14 @@ No cookies, analytics or third-party requests.
 
 How the domain, DNS and HTTPS are set up: [SETUP.md](SETUP.md).
 
-## Adding the Google Play link
+## The Google Play link
 
-In `index.html`, replace
-
-```html
-<span class="soon">Coming soon to Google Play</span>
-```
-
-with Google's official "Get it on Google Play" badge, saved in this repo (for example
-`loaded-dice/google-play-badge.png`, from https://play.google.com/intl/en_us/badges/) so visitors'
-browsers don't contact Google until they tap it:
-
-```html
-<a href="https://play.google.com/store/apps/details?id=com.jillybeanstudios.loadeddice"><img src="/loaded-dice/google-play-badge.png" alt="Get it on Google Play" width="180" height="53"></a>
-```
-
-Commit to `main` and the live site updates within a minute or two.
+The hero's gold button goes to the store page,
+https://play.google.com/store/apps/details?id=com.jillybeanstudios.loadeddice, with "Play in your
+browser" next to it. It is a plain text button in the site's own style, so visitors' browsers
+don't contact Google until they tap it. To use Google's official badge instead, save the PNG from
+https://play.google.com/intl/en_us/badges/ in this repo (for example
+`loaded-dice/google-play-badge.png`) and put it inside that link.
 
 ## Updating the screenshots and share image
 

@@ -26,20 +26,20 @@ Not written down anywhere else yet:
 
 ## In flight
 
-Nothing. Privacy pages are live (Brent approved Nov 24); Main is pointing the app and docs at
-them and turning the github.io copies into redirects. Merged branches are all deleted.
+Branch `google-play-link`: Loaded Dice is live on Google Play (Nov 24), so the hero's "Coming
+soon" text is now a gold "Get it on Google Play" button, with "Play in your browser" as an
+outlined button beside it, and the facts card says "Google Play and any browser". Waiting on
+Brent's go to fast-forward `main`. Google's badge images are blocked from the sandbox, so it is a
+text button; Brent can upload the official badge if he wants it.
 
 ## Next
 
-1. When Loaded Dice is public on Google Play: swap "Coming soon to Google Play" in `index.html`
-   for the official badge, saved in the repo (README has the snippet and the store URL), preview,
-   merge.
-2. When the game's look or store text changes: retake screenshots with `scripts/store-shots.cjs`
+1. When the game's look or store text changes: retake screenshots with `scripts/store-shots.cjs`
    from a separate checkout of `roll-the-dice` with its own `npm ci` (a symlinked
    `node_modules` loses the fonts), resize as in the README, update copy, preview, merge.
-3. In January: update the footer year.
-4. When the policy changes in roll-the-dice (after its rules review), copy it here word for
-   word, keeping only the two cross-links.
+2. In January: update the footer year.
+3. If Brent sends the official Google Play badge PNG: save it in `loaded-dice/`, put it in the
+   hero link, preview, merge.
 
 ## Artifact pages
 
