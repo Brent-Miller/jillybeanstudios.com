@@ -27,8 +27,7 @@ Not written down anywhere else yet:
 ## In flight
 
 Nothing. Privacy pages are live (Brent approved Nov 24); Main is pointing the app and docs at
-them and turning the github.io copies into redirects. Waiting on Brent (manual): delete the merged
-branches `site-redesign`, `game-look-update` and `privacy-pages`.
+them and turning the github.io copies into redirects. Merged branches are all deleted.
 
 ## Next
 
