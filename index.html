@@ -164,6 +164,8 @@
   .result { min-width: 0; }
   .result b { display: block; font: 800 var(--t2)/1.1 var(--font-display); }
   .result span { color: rgba(248, 242, 228, 0.78); font-size: 15px; }
+  .result .also { display: block; }
+  .result .also[hidden] { display: none; }
   .roll { background: var(--teal); color: var(--teal-ink); box-shadow: 0 4px 0 var(--teal-deep); min-width: 11em; }
   .roll:active { transform: translateY(4px); box-shadow: 0 0 0 var(--teal-deep); }
 
@@ -256,7 +258,7 @@
         <p class="tray-hint" id="tray-hint">Tap a die to hold it, then roll the rest. You get three rolls.</p>
         <div class="dice" id="dice"></div>
         <div class="tray-foot">
-          <p class="result" id="tray-result" aria-live="polite" style="margin:0"><b id="res-box">Large Straight</b><span id="res-pts">40 points</span></p>
+          <p class="result" id="tray-result" aria-live="polite" style="margin:0"><b id="res-box">Large Straight</b><span id="res-pts">40 points</span><span class="also" id="res-also" hidden></span></p>
           <button class="btn roll" id="roll" type="button">Roll again (2 left)</button>
         </div>
       </div>
@@ -323,6 +325,7 @@
   const rollBtn = document.getElementById('roll');
   const resBox = document.getElementById('res-box');
   const resPts = document.getElementById('res-pts');
+  const resAlso = document.getElementById('res-also');
   const hint = document.getElementById('tray-hint');
   let faces = [2, 3, 4, 5, 6];
   let held = [false, false, false, false, false];
@@ -369,7 +372,11 @@
     if (has(3)) opts.push(['Three of a Kind', sum]);
     for (let v = 6; v >= 1; v--) if (counts[v]) opts.push([NAMES[v], v * counts[v]]);
     opts.push(['Chance', sum]);
-    return opts.reduce((a, b) => (b[1] > a[1] ? b : a));
+    const top = opts.reduce((a, b) => (b[1] > a[1] ? b : a));
+    // A Full House scores a flat 25, so with high dice Three of a Kind (the dice added up) beats it.
+    // Name it anyway, so the tray doesn't look like it missed it.
+    const fh = opts.find(o => o[0] === 'Full House');
+    return [top[0], top[1], fh && fh !== top ? `Also a Full House: ${fh[1]}` : ''];
   }
 
   function draw() {
@@ -380,9 +387,11 @@
       el.setAttribute('aria-label', `Die showing ${faces[i]}`);
       el.disabled = rollsLeft === 0;
     });
-    const [name, pts] = best(faces);
+    const [name, pts, also] = best(faces);
     resBox.textContent = name;
     resPts.textContent = `${pts} points`;
+    resAlso.textContent = also;
+    resAlso.hidden = !also;
     if (rollsLeft > 0) {
       rollBtn.textContent = `Roll again (${rollsLeft} left)`;
       hint.textContent = 'Tap a die to hold it, then roll the rest. You get three rolls.';

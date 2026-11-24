@@ -37,4 +37,6 @@ then resize `2-round.png`, `3-scoring.png`, `4-shop.png` and `5-boss.png` to 540
 ## The dice tray
 
 The tray at the top of `index.html` is a small script in the same file: five dice, three rolls,
-tap to hold, and it names the best scorecard box using the game's base values. It stores nothing.
+tap to hold, and it names the best scorecard box using the game's base values. When the dice
+also make a Full House that scores less (high dice, where Three of a Kind adds up to more than
+25), it says so on a second line. It stores nothing.
