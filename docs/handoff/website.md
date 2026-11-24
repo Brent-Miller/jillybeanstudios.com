@@ -26,12 +26,8 @@ Not written down anywhere else yet:
 
 ## In flight
 
-Branch `google-play-link`: Loaded Dice is live on Google Play (Nov 24), so the hero's "Coming
-soon" text is now Google's official badge (Brent sent the PNG), with "Play in your browser" as an
-outlined button beside it, and the facts card says "Google Play and any browser". The dice tray
-also adds "Also a Full House: 25" when a Full House loses to Three of a Kind (Brent, Nov 24). After the last roll it now says "That's your turn. In a
-run, trinkets can turn rolls like this into thousands of points." (Brent, Nov 24).
-Waiting on Brent's go to fast-forward `main`.
+Nothing. Google Play badge, the tray's "Also a Full House" line and its new last-roll text went
+live Nov 24 (99e43db). Waiting on Brent (manual): delete the merged branch `google-play-link`.
 
 ## Next
 
