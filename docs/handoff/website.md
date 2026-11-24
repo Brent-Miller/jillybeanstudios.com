@@ -27,7 +27,7 @@ Not written down anywhere else yet:
 ## In flight
 
 Nothing. Google Play badge, the tray's "Also a Full House" line and its new last-roll text went
-live Nov 24 (99e43db). Waiting on Brent (manual): delete the merged branch `google-play-link`.
+live Nov 24 (99e43db). Merged branches are all deleted.
 
 ## Next
 
